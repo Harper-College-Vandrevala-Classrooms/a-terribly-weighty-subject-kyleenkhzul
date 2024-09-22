@@ -1,10 +1,8 @@
 package com.csc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 public class TestConverter {
 
   Converter converter;
@@ -14,6 +12,7 @@ public class TestConverter {
     converter = new Converter();
   }
 
+  // To Pounds tests
   @Test
   public void testZeroOuncesToPounds() {
     assertEquals("0.0000 lbs", converter.toPounds(0));
@@ -44,6 +43,7 @@ public class TestConverter {
     assertEquals("2.0000 lbs", converter.toPounds(32));
   }
 
+  // Pounds and Ounces tests
   @Test
   public void testZeroOuncesToPoundsAndOunces() {
     assertEquals("0 lbs 0 oz", converter.toPoundsAndOunces(0));
@@ -72,5 +72,37 @@ public class TestConverter {
   @Test
   public void test32OuncesToPoundsAndOunces() {
     assertEquals("2 lbs 0 oz", converter.toPoundsAndOunces(32));
+  }
+
+  // Overloaded tests
+  @Test
+  public void testOverloadedToPounds() {
+    assertEquals("0.0000 lbs", converter.toPounds());
+  }
+
+  @Test
+  public void testOverloadedToPoundsAndOunces() {
+    assertEquals("0 lbs 0 oz", converter.toPoundsAndOunces());
+  }
+
+  // toOunces tests
+  @Test
+  public void test0PoundAnd0OzToOunces() {
+    assertEquals("0 ounces", converter.toOunces(0, 0));
+  }
+
+  @Test
+  public void test1PoundAnd11OzToOunces() {
+    assertEquals("27 ounces", converter.toOunces(1, 11));
+  }
+
+  @Test
+  public void test0PoundAnd7OzToOunces() {
+    assertEquals("7 ounces", converter.toOunces(0, 7));
+  }
+
+  @Test
+  public void test2PoundAnd0OzToOunces() {
+    assertEquals("32 ounces", converter.toOunces(2, 0));
   }
 }
